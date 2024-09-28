@@ -18,6 +18,8 @@ resource "google_compute_instance" "default" {
     }
   }
 
+  metadata_startup_script = file("startup.sh")
+
   network_interface {
     network = "default"
     access_config {}
