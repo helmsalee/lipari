@@ -14,7 +14,8 @@ resource "google_compute_instance" "lipari-vm" {
 
   boot_disk {
     initialize_params {
-      image = var.ubuntu_2204_minimal_sku
+      image = var.ubuntu_2204_lts_sku
+      size = 100
     }
   }
 
