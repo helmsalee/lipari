@@ -4,7 +4,7 @@ resource "random_id" "instance_id" {
 }
 
 # Create VM
-resource "google_compute_instance" "default" {
+resource "google_compute_instance" "lipari-vm" {
   name         = "lipari-${random_id.instance_id.hex}"
   machine_type = var.f1-micro
   tags         = ["ssh","http"]
@@ -19,6 +19,10 @@ resource "google_compute_instance" "default" {
   }
 
   metadata_startup_script = file("startup.sh")
+
+  metadata = {
+    ssh-keys = "anthony_a:${file("~/.ssh/id_rsa.pub")}"
+  }
 
   network_interface {
     network = "default"
