@@ -22,7 +22,7 @@ resource "google_compute_instance" "lipari-vm" {
   metadata_startup_script = file("startup.sh")
 
   metadata = {
-    ssh-keys = "anthony_a:${file("~/.ssh/id_rsa.pub")}"
+    ssh-keys = "anthony_a:${file("~/.ssh/lipari.pub")}"
   }
 
   network_interface {
