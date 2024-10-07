@@ -6,7 +6,8 @@ resource "random_id" "instance_id" {
 # Create VM
 resource "google_compute_instance" "lipari-vm" {
   name         = "lipari-${random_id.instance_id.hex}"
-  machine_type = var.f1-micro
+  machine_type = var.e2-standard-8
+  allow_stopping_for_update = true
   tags         = ["ssh","http"]
   labels = {
     "owner" = "anthonya"
